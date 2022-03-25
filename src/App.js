@@ -6,19 +6,24 @@ import StarshipCard from './StarShipCard'
 export default function App() {
   const [starship, setStarship] = useState([]);
   const [nextUrl, setURL] = useState('https://swapi.dev/api/starships/');
+  const [clicked, setClicked] = useState(false);
   
   //run on load
   useEffect(() => {
-    getData(nextUrl)
-      .then((res) => {
-        // getNext(res)
-        setURL(res.next)
-        setStarship(res.results)}
-      )
-  }, []);
+    if(nextUrl) 
+    {
+      getData(nextUrl)
+        .then((res) => {
+          // getNext(res)
+          setURL(res.next)
+          setStarship(res.results)}
+        )
+    }
+  }, [clicked]);
 
-  function getNext(){
+  function handleClick(){
     console.log(nextUrl)
+    setClicked(true)
     getData(nextUrl)
   }
     
@@ -37,7 +42,7 @@ export default function App() {
           )
         }
       </div>
-        <button id='buttonB' onClick={getNext}>NEXT</button>
+        <button id='buttonB' onClick={handleClick}>NEXT</button>
     </div>
   );
 }
