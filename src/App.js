@@ -6,7 +6,8 @@ import StarshipCard from './StarShipCard'
 export default function App() {
   const [starship, setStarship] = useState([]);
   const [nextUrl, setURL] = useState('https://swapi.dev/api/starships/');
-  const [clicked, setClicked] = useState(false);
+  const [page, setPage] = useState(1);
+  
   
   //run on load
   useEffect(() => {
@@ -19,12 +20,13 @@ export default function App() {
           setStarship(res.results)}
         )
     }
-  }, [clicked]);
+  }, [page]);
 
   function handleClick(){
     console.log(nextUrl)
-    setClicked(true)
+    setPage(page + 1)
     getData(nextUrl)
+    if (!nextUrl) {}
   }
     
   // console.log(starship)
