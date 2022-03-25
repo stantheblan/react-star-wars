@@ -1,11 +1,17 @@
-export function getData() {
+export function getData(url) {
     return (
-        fetch("https://swapi.dev/api/starships/")
-            .then((res) => { return res.json();})
-
-            .catch((err) => {return console.log(err)})
-            );
+        fetch(url)
+        .then((res) => { return res.json();})
+        .catch((err) => {return console.log(err)})
+    );
 }
+
+//==========================================================
+// attempting to use the api to manipulate the api
+
+// didnt work
+
+
 // export function getData() {
 //     const allData = []
 //     return (

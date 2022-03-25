@@ -1,9 +1,7 @@
-export default function StarshipCard(props) {
-    let ships = props;
-    // console.log(ships[1])
+export default function StarshipCard(ships) {
     return (
         <div className="starshipCard">
-            <p>{ships.name}</p>
+            <a href={ships.url}><h2>{ships.name}</h2></a>
         </div>
     )
 }
